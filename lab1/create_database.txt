@@ -1,0 +1,45 @@
+CREATE DATABASE lab1;
+
+USE lab1;
+
+CREATE TABLE sailors (
+sid INTEGER,
+sname CHAR(20),
+rating INTEGER,
+age REAL,
+PRIMARY KEY (sid)
+);
+
+CREATE TABLE boats (
+bid INTEGER,
+bname CHAR(20),
+bcolor CHAR(10),
+PRIMARY KEY (bid)
+);
+
+CREATE TABLE reserves (
+sid INTEGER,
+bid INTEGER,
+day DATE,
+PRIMARY KEY (sid,bid,day),
+FOREIGN KEY (sid) REFERENCES sailors (sid),
+FOREIGN KEY (bid) REFERENCES boats (bid)
+);
+
+INSERT INTO sailors VALUES
+(1,'Fred',7,22),
+(2,'Jim',2,39),
+(3,'Nancy',8,27);
+
+INSERT INTO boats VALUES
+(101,'Nina','red'),
+(102,'Pinta','blue'),
+(103,'Santa Maria','red');
+
+INSERT INTO reserves VALUES
+(1,102,'2015-09-12'),
+(2,102,'2015-09-13');
+
+SELECT * FROM sailors;
+SELECT * FROM boats;
+SELECT * FROM reserves;
