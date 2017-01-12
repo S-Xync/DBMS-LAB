@@ -29,6 +29,20 @@ if(mysqli_num_rows($result)>0){
   echo "0 results<br><br>";
 }
 
+echo "<h2>Sailors with rating greater than 7</h2>";
+$sql="SELECT * FROM sailors WHERE rating>7";
+$result=mysqli_query($conn,$sql);
+if(mysqli_num_rows($result)>0){
+  while($row=mysqli_fetch_assoc($result)){
+    echo "Id :".$row["sid"]."<br>";
+    echo "Name :".$row["sname"]."<br>";
+    echo "Rating :".$row["rating"]."<br>";
+    echo "Age :".$row["age"]."<br><br>";
+  }
+  echo "<br>";
+}else{
+  echo "0 results<br><br>";
+}
 //Names and ages of all sailors
 echo "<h2>Names and Ages of all sailors</h2>";
 $sql="SELECT sname,age FROM sailors";
